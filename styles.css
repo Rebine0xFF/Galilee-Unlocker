@@ -1,0 +1,36 @@
+/*
+ * Galilée Unlocker – styles.css
+ * Injecté dès document_start dans la page ET dans tous les iframes galilee.ac
+ *
+ * 1. Cache div.blur instantanément (avant même l'exécution du JS)
+ * 2. Neutralise les effets visuels de .gure-is-locked
+ */
+
+/* Masque le paywall immédiatement, avant que ai_logger.js ne l'affiche */
+div.blur,
+.blur {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Annule les effets de verrouillage de la div parente */
+.gure-is-locked {
+  /* Certains thèmes Moodle appliquent un filtre ou un overflow:hidden */
+  filter: none !important;
+  overflow: visible !important;
+  max-height: none !important;
+  pointer-events: auto !important;
+  user-select: auto !important;
+}
+
+/* S'assure que le feedback (correction) reste lisible */
+.gure-is-locked .feedback,
+.gure-is-locked .outcome,
+.gure-is-locked .generalfeedback,
+.gure-is-locked .rightanswer {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
