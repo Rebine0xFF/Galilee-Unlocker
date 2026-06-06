@@ -4,14 +4,18 @@
 
 
 <div align="center">
-  <h1>🔓 Galilée Unlocker</h1>
+  <h1>Galilee Unlocker</h1>
   <p><strong>Extension navigateur qui supprime le paywall d'abonnement sur <a href="https://galilee.ac">galilee.ac</a></strong></p>
+
+  <p>
+    <img src="https://img.shields.io/github/license/Rebine0xFF/Galilee-Unlocker?style=for-the-badge" alt="GitHub License">
+    <img src="https://img.shields.io/badge/Statut-Terminé-green?style=for-the-badge" alt="Status">
+  </P>
 
   <p>
     <img alt="Manifest V3" src="https://img.shields.io/badge/Manifest-V3-5838c9?style=flat-square&logo=googlechrome&logoColor=white">
     <img alt="Microsoft Edge" src="https://img.shields.io/badge/Edge-Supporté-0078D4?style=flat-square&logo=microsoftedge&logoColor=white">
     <img alt="Google Chrome" src="https://img.shields.io/badge/Chrome-Supporté-4285F4?style=flat-square&logo=googlechrome&logoColor=white">
-    <img alt="License MIT" src="https://img.shields.io/badge/Licence-MIT-22c55e?style=flat-square">
   </p>
 </div>
 
@@ -19,9 +23,9 @@
 
 ## Présentation
 
-Galilée Unlocker est une extension navigateur légère qui supprime automatiquement l'overlay d'abonnement sur [galilee.ac](https://galilee.ac), une plateforme d'apprentissage des mathématiques construite sur Moodle.
+Une extension navigateur légère qui supprime automatiquement l'overlay d'abonnement sur [galilee.ac](https://galilee.ac), une plateforme d'apprentissage des mathématiques construite sur Moodle.
 
-Lorsqu'un élève soumet une réponse, la plateforme injecte un voile flou et verrouille la correction derrière un paywall (`div.blur` + classe CSS `gure-is-locked`). Cette extension intercepte et supprime ces éléments en temps réel, sans aucune interaction de l'utilisateur.
+Lorsqu'une réponse est soumise, la plateforme injecte un voile flou et verrouille la correction derrière un paywall (`div.blur` + classe CSS `gure-is-locked`). Cette extension intercepte et supprime ces éléments en temps réel, sans aucune interaction de l'utilisateur.
 
 ---
 
@@ -37,7 +41,7 @@ Lorsqu'un élève soumet une réponse, la plateforme injecte un voile flou et ve
 
 ## Installation
 
-> Aucune publication sur un store — l'extension se charge manuellement en mode développeur.
+> Aucune publication sur un store, chargez manuellement l'extension en mode développeur.
 
 1. **Télécharger** la [dernière release](../../releases/latest) et dézipper, ou cloner ce dépôt
 2. Ouvrir le navigateur et accéder à :

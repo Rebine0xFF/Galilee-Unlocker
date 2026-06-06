@@ -8,7 +8,7 @@
   <p><strong>Browser extension that removes the subscription paywall on <a href="https://galilee.ac">galilee.ac</a></strong></p>
 
   <p>
-    <img src="https://img.shields.io/github/license/Rebine0xFF/REPOLINK?style=for-the-badge" alt="GitHub License">
+    <img src="https://img.shields.io/github/license/Rebine0xFF/Galilee-Unlocker?style=for-the-badge" alt="GitHub License">
     <img src="https://img.shields.io/badge/Status-Finished-green?style=for-the-badge" alt="Status">
   </P>
 
@@ -23,9 +23,9 @@
 
 ## Overview
 
-Galilée Unlocker is a lightweight browser extension that automatically removes the subscription overlay on [galilee.ac](https://galilee.ac), a French math e-learning platform built on Moodle.
+A lightweight browser extension that automatically removes the subscription overlay on [galilee.ac](https://galilee.ac), a French math e-learning platform built on Moodle.
 
-When a student submits an answer, the platform injects a blur overlay and locks the correction behind a paywall (`div.blur` + CSS class `gure-is-locked`). This extension intercepts and removes these elements in real time, without any user interaction.
+When an answer is submitted, the platform injects a blur overlay and locks the correction behind a paywall (`div.blur` + CSS class `gure-is-locked`). This extension intercepts and removes these elements in real time, without any user interaction.
 
 ---
 
