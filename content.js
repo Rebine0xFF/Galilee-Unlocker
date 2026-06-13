@@ -1,30 +1,27 @@
-/**
- * Galilée Unlocker – content.js  v1.2
- * Cible : https://galilee.ac/* (page principale + tous les iframes)
- */
 
 (function () {
   "use strict";
 
   // ─── Logger ────────────────────────────────────────────────────────────────
-  const TAG   = "%c🔓 Galilée Unlocker";
+  const TAG   = "%c🔓 Galilee Unlocker";
   const STYLE = "background:#5838c9;color:#fff;font-weight:bold;padding:2px 6px;border-radius:4px;font-size:11px;";
   const DIM   = "color:#aaa;font-size:11px;";
 
   const log = {
     info : (...args) => console.log (TAG, STYLE, ...args),
-    ok   : (...args) => console.log ("%c🔓 Galilée Unlocker%c ✔",
+    ok   : (...args) => console.log ("%c🔓 Galilee Unlocker%c ✔",
                           STYLE + "background:#5838c9;", "color:#22c55e;font-weight:bold;", ...args),
     warn : (...args) => console.warn(TAG, STYLE, ...args),
     dim  : (...args) => console.log (TAG + "%c", STYLE, DIM, ...args),
   };
-  // ───────────────────────────────────────────────────────────────────────────
 
-  const ctx = window === window.top ? "page principale" : `iframe (${location.pathname.split("/").pop()})`;
-  log.info(`Actif sur ${ctx}`);
+  const ctx = window === window.top ? "main page" : `iframe (${location.pathname.split("/").pop()})`;
+  log.info(`Active on ${ctx}`);
 
+
+  
   /**
-   * Supprime div.blur et retire la classe gure-is-locked.
+   * Removes div.blur and removes the gure-is-locked class.
    * @param {Document|Element} root
    * @returns {{ blurRemoved: number, locksRemoved: number }}
    */
@@ -45,12 +42,12 @@
     return { blurRemoved, locksRemoved };
   }
 
-  // --- Passe initiale ---
+  // --- Initial pass ---
   const init = unlock(document);
   if (init.blurRemoved || init.locksRemoved) {
-    log.ok(`Passe initiale — paywall: ${init.blurRemoved} supprimé(s), verrous: ${init.locksRemoved} retiré(s)`);
+    log.ok(`Initial pass — paywall: ${init.blurRemoved} removed, locks: ${init.locksRemoved} removed`);
   } else {
-    log.dim(`Passe initiale — rien à nettoyer`);
+    log.dim(`Initial pass — nothing to clean up`);
   }
 
   // --- MutationObserver ---
@@ -63,15 +60,15 @@
       for (const node of mutation.addedNodes) {
         if (node.nodeType !== Node.ELEMENT_NODE) continue;
 
-        // Cas 1 : nœud ajouté = div.blur
+        // Case 1: added node = div.blur
         if (node.classList && node.classList.contains("blur")) {
           node.remove();
           directBlur++;
-          log.warn(`div.blur intercepté et supprimé immédiatement`);
+          log.warn(`div.blur intercepted and removed immediately`);
           continue;
         }
 
-        // Cas 2 : nœud ajouté contient des éléments à nettoyer
+        // Case 2: added node contains elements to clean up
         if (node.querySelector) {
           if (node.querySelector(".blur") || node.querySelector(".gure-is-locked")) {
             needsUnlock = true;
@@ -79,7 +76,7 @@
         }
       }
 
-      // Modification de l'attribut class → ajout de gure-is-locked
+      // Class attribute modification → gure-is-locked added
       if (
         mutation.type === "attributes" &&
         mutation.attributeName === "class" &&
@@ -88,13 +85,13 @@
       ) {
         mutation.target.classList.remove("gure-is-locked");
         directLock++;
-        log.warn(`Classe gure-is-locked interceptée sur <${mutation.target.tagName.toLowerCase()}> et retirée`);
+        log.warn(`gure-is-locked class intercepted on <${mutation.target.tagName.toLowerCase()}> and removed`);
       }
     }
 
     if (needsUnlock) {
       const r = unlock(document);
-      log.ok(`Nettoyage dynamique — paywall: ${r.blurRemoved} supprimé(s), verrous: ${r.locksRemoved} retiré(s)`);
+      log.ok(`Dynamic cleanup — paywall: ${r.blurRemoved} removed, locks: ${r.locksRemoved} removed`);
     }
   });
 
@@ -105,5 +102,5 @@
     attributeFilter: ["class"],
   });
 
-  log.dim(`Observer actif — en attente de soumission...`);
+  log.dim(`Observer active — waiting for submission...`);
 })();

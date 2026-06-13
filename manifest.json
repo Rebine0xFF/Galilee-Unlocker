@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Galilée Unlocker",
-  "description": "Supprime le blocage de contenu sur galilee.ac",
-  "version": "1.1",
+  "name": "Galilee Unlocker",
+  "description": "Removes content blocking on galilee.ac",
+  "version": "1.2",
   "content_scripts": [
     {
       "matches": ["https://galilee.ac/*"],
